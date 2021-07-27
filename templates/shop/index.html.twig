@@ -1,0 +1,21 @@
+{% extends 'shop-base.html.twig' %}
+
+{% block title %}Hello from Shop!{% endblock %}
+
+{% block body %}
+        SHOP.com
+        {% if category is defined %}
+                <br>{{ category.name }}
+                {% for product in category.products %}
+                        <div class="product">
+                                <img width="200" src="{{ product.img }}" alt="{{ product.name }}"><br>
+                                {{ product.name }}<br>
+                                {% set price = product.price / 100 %}
+                                {{ price | format_currency('EUR', {fraction_digit: 2})}}
+                                [ <a class="add-to-cart" href="{{ path('add_to_cart', {'ean' : product.ean}) }}">Add to cart</a> ]
+                        </div>
+                {% else %}
+                        Category has no products
+                {% endfor %}
+        {% endif %}
+{% endblock %}

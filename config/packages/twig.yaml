@@ -2,6 +2,8 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
         meniu_list: '@App\Service\Meniu'
+        category_list: '@App\Service\CategoryList'
+        cart: '@App\Service\Cart'
 
 when@test:
     twig:

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>[{{ product.getCategory() | join(' | ') }}] {{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Ean</th>
+                <td>{{ product.ean }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Img</th>
+                <td><img width="150" src="{{ product.img }}" alt="{{ product.name }}"></td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>
+                    {% set price = product.price / 100 %}
+                    {{ price | format_currency('EUR', {fraction_digit: 2})}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_index') }}">back to list</a>
+
+    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+
+    {{ include('product/_delete_form.html.twig') }}
+{% endblock %}
