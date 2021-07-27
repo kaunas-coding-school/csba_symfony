@@ -1,0 +1,5 @@
+{% for item in meniu_list.getMeniuList %}
+    <div class="meniu_item"><a href="{{ path(item.pathName) }}">{{ item.name }}</a></div>
+{% else %}
+    No meniu items found
+{% endfor %}

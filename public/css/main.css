@@ -1,0 +1,27 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: "Roboto Light";
+    font-size: 2em;
+}
+footer {
+    background-color: #413f3f;
+    color: #999999;
+    width: 100%;
+    height: 100px;
+}
+
+.content {
+    clear: both;
+}
+.navigation .meniu_item {
+    float: left;
+    margin: 0 2px;
+    padding: 0 3px;
+    border-right: 1px solid black;
+}
+.navigation .meniu_item:last-child {
+    border: none;
+}

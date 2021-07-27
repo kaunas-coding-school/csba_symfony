@@ -14,8 +14,20 @@
         </div>
     {% endif %}
 
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="mb-3">
+            Esi ADMINISTRATORIUS
+        </div>
+    {% endif %}
+
+    {% if is_granted('ROLE_MANAGER') %}
+        <div class="mb-3">
+            Esi vadybininkas
+        </div>
+    {% endif %}
+
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputPerson_id">Person_id</label>
+    <label for="inputEmail_id">Email</label>
     <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="username" required autofocus>
     <label for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>

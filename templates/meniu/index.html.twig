@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meniu index{% endblock %}
+
+{% block body %}
+    <h1>Meniu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Path_name</th>
+                <th>Path</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meniu in menius %}
+            <tr>
+                <td>{{ meniu.id }}</td>
+                <td>{{ meniu.name }}</td>
+                <td>{{ meniu.pathName }}</td>
+                <td>{{ meniu.path }}</td>
+                <td>
+                    <a href="{{ path('meniu_show', {'id': meniu.id}) }}">show</a>
+                    <a href="{{ path('meniu_edit', {'id': meniu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('meniu_new') }}">Create new</a>
+{% endblock %}

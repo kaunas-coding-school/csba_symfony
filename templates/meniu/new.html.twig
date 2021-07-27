@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Meniu{% endblock %}
+
+{% block body %}
+    <h1>Create new Meniu</h1>
+
+    <form action="{{ path('meniu_new') }}" method="post">
+        NAME: <input type="text" name="name"\><br>
+        <select name="path_name" id="">
+            {% for key, val in routes %}
+            <option value="{{ key }}">{{ key }}</option>
+            {% else %}
+                <option>NO ROUTE FOND</option>
+            {% endfor %}
+        </select>
+        <hr>
+        <button class="btn btn-primarry" type="submit">{{ button_label|default('Save') }}</button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    </form>
+
+<br>
+    <a href="{{ path('meniu_index') }}">back to list</a>
+{% endblock %}
