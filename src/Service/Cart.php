@@ -12,7 +12,7 @@ class Cart
     {
     }
 
-    public function getUserCart(): Order
+    public function getUserCart(): ?Order
     {
         $user = $this->security->getUser();
         return $this->repository->findOneBy(['status' => Order::STATUS_CART, 'user' => $user]);

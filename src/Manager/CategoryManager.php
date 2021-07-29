@@ -13,8 +13,10 @@ class CategoryManager
 
     public function getOneByName(string $name): Category
     {
-        return $this->em->getRepository(Category::class)
-            ->findOneBy(['name' => $name])
-            ;
+        $entityManager = $this->em;
+        $repository = $entityManager->getRepository(Category::class);
+        $category = $repository->findOneBy(['name' => $name]);
+
+        return $category;
     }
 }

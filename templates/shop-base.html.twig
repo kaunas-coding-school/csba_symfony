@@ -17,11 +17,14 @@
 <div class="navigation">
     {% include 'components/navigation.html.twig' with {'meniu_list': category_list} %}
     <div class="cart">
-        {% if cart.getUserCart() is defined %}
+        {% if cart is defined and cart.getUserCart() is defined %}
             {% set cart = cart.getUserCart() %}
-            {{ cart.getProducts | length }} |
-            {% set price = cart.totalPrice / 100 %}
-            {{ price | format_currency('EUR', {fraction_digit: 2}) }}
+            {% if (cart is not null) %}
+                {{ dump(cart) }}
+{#                {{ cart.getProducts | length }} |#}
+{#                {% set price = cart.totalPrice / 100 %}#}
+{#                {{ price | format_currency('EUR', {fraction_digit: 2}) }}#}
+            {% endif %}
         {% endif %}
         <div id="notification-message"></div>
     </div>
