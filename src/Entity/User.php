@@ -38,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity=Person::class, cascade={"persist", "remove"}, inversedBy="user")
+     * @ORM\ManyToOne(targetEntity=Person::class, cascade={"persist", "remove"}, inversedBy="user")
      */
     private $person;
 

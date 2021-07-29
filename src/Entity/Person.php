@@ -33,7 +33,7 @@ class Person
     private $birth_date;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="person", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="person", cascade={"persist", "remove"})
      */
     private $user;
 

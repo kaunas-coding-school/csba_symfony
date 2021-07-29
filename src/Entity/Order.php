@@ -14,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Order
 {
     public const STATUS_CART = 'cart';
+    public const STATUS_DONE = 'done';
+    public const STATUS_ARCHIVE = 'archive';
 
     /**
      * @ORM\Id
@@ -42,6 +44,16 @@ class Order
      * @ORM\ManyToMany(targetEntity=Product::class)
      */
     private $products;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $created_at;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $updated_at;
 
     public function __construct()
     {
@@ -113,6 +125,30 @@ class Order
         if (!$this->products->contains($product)) {
             $this->total_price -= $product->getPrice();
         }
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
         return $this;
     }
 }
